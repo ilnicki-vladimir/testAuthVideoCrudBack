@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-ts": "tsc",
-    "postinstall": "npm run build-ts",
-    "start": "npm run serve",
-    "serve": "node build/app.js",
-    "watch-node": "nodemon build/app.js",
-    "watch-ts": "tsc -w"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc":"tsc",
+    "tsc:run": "tsc --project tsconfig.json",
+    "lint": "eslint . --ext .ts",
+    "clean": "rm -rf build",
+    "build": "npm run tsc:run",
+    "watch:build": "npm run tsc:run --watch",
+    "watch:server": "nodemon ./build/app.js --watch",
+    "start": "npm-run-all clean  build --parallel watch:build watch:server --print-label"
   },
   "author": "",
   "license": "ISC",
