@@ -1,0 +1,25 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "airbnb-base"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".d.ts", ".ts", ".tsx"]
+      }
+    }
+  },
+  "rules": {
+    "import/extensions": "off",
+    "class-methods-use-this":"off",
+    "import/no-cycle": "off",
+    "@typescript-eslint/no-var-requires": "off"
+  }
+}

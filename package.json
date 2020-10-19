@@ -1,0 +1,53 @@
+{
+  "name": "testauthvideocrudback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "lint": "eslint . --ext .ts",
+    "clean": "rm -rf build",
+    "build": "tsc -p tsconfig.json",
+    "watch:build": "tsc -p tsconfig.json --watch",
+    "watch:server": "nodemon ./build/app.js --watch",
+    "start": "npm-run-all clean  build --parallel watch:build watch:server --print-label"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.8",
+    "@types/jsonwebtoken": "^8.5.0",
+    "body-parser": "^1.19.0",
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-swagger-generator": "^1.1.17",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "npm-run-all": "^4.1.5",
+    "pg": "^8.3.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.26"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.7",
+    "@types/morgan": "^1.9.1",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.3",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3"
+  }
+}
