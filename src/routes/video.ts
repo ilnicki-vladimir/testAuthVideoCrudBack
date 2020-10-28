@@ -38,9 +38,9 @@ export default (app: Router): void => {
   route.post('/', videoController.create);
 
   /**
-   * @route get /videos/:id
+   * @route get /videos/{id}
    * @group Video
-   * @param {string} id.query.required
+   * @param {string} id.path.required
    * @returns {Video.model} 200 - Return found video
    * @returns {Error} 400 - Video not found
    * @returns {Error} 401 - Unauthorized
@@ -63,9 +63,9 @@ export default (app: Router): void => {
   route.post('/shared', videoController.sharedVideo);
 
   /**
-   * @route POST /videos/:id
+   * @route POST /videos/{id}
    * @group Video
-   * @param {string} id
+   * @param {string} id.path.required
    * @param {Video.model} video.body.required
    * @returns {Video.model} 200 - Return update video
    * @returns {Error} 400 - Video not found
@@ -76,9 +76,9 @@ export default (app: Router): void => {
   route.post('/:id', videoController.update);
 
   /**
-   * @route delete /videos/:id
+   * @route delete /videos/{id}
    * @group Video
-   * @param {string} id
+   * @param {string} id.path.required
    * @returns {string} 200 - Return id deleted video
    * @returns {Error} 400 - Video not found
    * @returns {Error} 401 - Unauthorized

@@ -7,7 +7,7 @@ import routes from "../routes";
 export default (app: express.Application): void => {
   app.enable("trust proxy");
   app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded());
+  // app.use(bodyParser.urlencoded());
   app.use(morgan("tiny"));
 
   const corsOptions = {

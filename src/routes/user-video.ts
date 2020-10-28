@@ -36,9 +36,9 @@ export default (app: Router): void => {
   route.post('/', userVideoController.create);
 
   /**
-   * @route get /uservideos/:id
+   * @route get /uservideos/{id}
    * @group UserVideo
-   * @param {string} id.query.required
+   * @param {string} id.path.required
    * @returns {UserVideo.model} 200 - Return found user
    * @returns {Error} 400 - User not found
    * @returns {Error} 401 - Unauthorized
@@ -48,9 +48,9 @@ export default (app: Router): void => {
   route.get('/:id', userVideoController.findOne);
 
   /**
-   * @route POST /uservideos/:id
+   * @route POST /uservideos/{id}
    * @group UserVideo
-   * @param {string} id
+   * @param {string} id.path.required
    * @param {UserVideo.model} uservideos.body.required
    * @returns {UserVideo.model} 200 - Return update user
    * @returns {Error} 400 - User not found
@@ -61,9 +61,9 @@ export default (app: Router): void => {
   route.post('/:id', userVideoController.update);
 
   /**
-   * @route delete /uservideos/:id
+   * @route delete /uservideos/{id}
    * @group UserVideo
-   * @param {string} id
+   * @param {string} id.path.required
    * @returns {string} 200 - Return id deleted user
    * @returns {Error} 400 - User not found
    * @returns {Error} 401 - Unauthorized

@@ -38,9 +38,9 @@ export default (app: Router): void => {
   route.post('/', userController.create);
 
   /**
-   * @route get /users/:id
+   * @route get /users/{id}
    * @group User
-   * @param {string} id.query.required
+   * @param {string} id.path.required
    * @returns {User.model} 200 - Return found user
    * @returns {Error} 400 - User not found
    * @returns {Error} 401 - Unauthorized
@@ -50,9 +50,9 @@ export default (app: Router): void => {
   route.get('/:id', userController.findOne);
 
   /**
-   * @route POST /users/:id
+   * @route POST /users/{id}
    * @group User
-   * @param {string} id
+   * @param {string} id.path.required
    * @param {User.model} user.body.required
    * @returns {User.model} 200 - Return update user
    * @returns {Error} 400 - User not found
@@ -63,9 +63,9 @@ export default (app: Router): void => {
   route.post('/:id', userController.update);
 
   /**
-   * @route delete /users/:id
+   * @route delete /users/{id}
    * @group User
-   * @param {string} id
+   * @param {string} id.path.required
    * @returns {string} 200 - Return id deleted user
    * @returns {Error} 400 - User not found
    * @returns {Error} 401 - Unauthorized
