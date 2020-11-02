@@ -14,6 +14,7 @@ export default (app: Router): void => {
    * @property {string} name
    * @property {string} description
    * @property {string} link
+   * @property {string} type
    */
 
   /**

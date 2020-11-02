@@ -20,6 +20,10 @@ export default class Video {
   @IsNotEmpty()
   public link!: string;
 
+  @Column()
+  @IsNotEmpty()
+  public type!: string;
+
   @ManyToOne(() => UserVideo, (userVideo) => userVideo.videos, {
     onDelete: 'CASCADE',
   })

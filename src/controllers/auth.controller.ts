@@ -15,7 +15,12 @@ const authService: AuthService = new AuthService();
 export async function login(req: Request, res: Response): Promise<void> {
   const { name, password } = req.body;
 
-  await authService.autoLogin(name, password);
+  try {
+    await authService.autoLogin(name, password);
+  } catch (error) {
+    res.send({ status: 401, error });
+    return;
+  }
 
   const user: User = await authService.getCurrentUser();
 
@@ -37,7 +42,7 @@ export async function login(req: Request, res: Response): Promise<void> {
       refreshToken,
     });
   } else {
-    res.send(ERROR_INCORRECT_CREDENTIALS);
+    res.send({ status: 401, message: ERROR_INCORRECT_CREDENTIALS });
   }
 }
 
