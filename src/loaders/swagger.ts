@@ -10,10 +10,10 @@ export default (app: express.Application):void => {
         title: 'Swagger',
         version: '1.0.0',
       },
-      host: 'https://back-end-test-video-crud.herokuapp.com',
+      host: 'back-end-test-video-crud.herokuapp.com',
       basePath: '/',
       produces: ['application/json', 'application/xml'],
-      schemes: ['http', 'https'],
+      schemes: ['https', 'http'],
       securityDefinitions: {
         JWT: {
           type: 'apiKey',
