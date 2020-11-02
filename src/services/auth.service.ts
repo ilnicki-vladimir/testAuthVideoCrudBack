@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import {
   ERROR_AUTHORIZATION,
   ERROR_INCORRECT_CREDENTIALS,
@@ -20,12 +21,16 @@ export default class AuthService {
   async autoLogin(name: string, password: string): Promise<void> {
     AuthService.currentUser = await this.userService.findByName(name);
 
-    if (AuthService.currentUser.password !== password) {
+    if (AuthService.currentUser.password !== this.getHash(password)) {
       throw new Error(ERROR_INCORRECT_CREDENTIALS);
     }
   }
 
   logOut(): void {
     AuthService.currentUser = undefined;
+  }
+
+  private getHash(text:string):string {
+    return crypto.createHash('sha256').update(text).digest('hex');
   }
 }

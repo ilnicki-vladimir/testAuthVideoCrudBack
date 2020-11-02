@@ -125,5 +125,5 @@ export function logout(req: Request, res: Response): void {
   refreshTokens = refreshTokens.filter((t) => t !== token);
   authService.logOut();
 
-  res.send(LOGOUT_SUCCESS);
+  res.send({ status: 200, message: LOGOUT_SUCCESS });
 }

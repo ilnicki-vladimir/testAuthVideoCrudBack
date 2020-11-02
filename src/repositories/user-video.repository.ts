@@ -27,7 +27,6 @@ export default class UserVideoRepository extends BaseRepository<UserVideo> {
     await this.findOne(userVideo.id);
     await this.baseRepository.save(userVideo);
 
-
     return this.baseRepository.findOneOrFail(userVideo.id);
   }
 

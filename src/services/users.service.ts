@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import BaseService from './base.service';
 import { ERROR_NAME_ALREADY_EXISTS } from '../constants/error';
 import UserRepository from '../repositories/users.repository';
@@ -21,8 +22,10 @@ export default class UserService extends BaseService<User, UserRepository> {
   }
 
   public async create(user: User): Promise<User> {
-    await this.validationUser(user);
-    const userCreate = await this.baseRepository.create(user);
+    let userCreate = user;
+    userCreate.password = this.getHash(user.password);
+    await this.validationUser(userCreate);
+    userCreate = await this.baseRepository.create(userCreate);
     const userVideo = new UserVideo();
     userVideo.user = userCreate;
     await this.userVideoService.create(userVideo);
@@ -57,5 +60,9 @@ export default class UserService extends BaseService<User, UserRepository> {
     ) {
       throw new Error(ERROR_NAME_ALREADY_EXISTS);
     }
+  }
+
+  private getHash(text:string):string {
+    return crypto.createHash('sha256').update(text).digest('hex');
   }
 }
